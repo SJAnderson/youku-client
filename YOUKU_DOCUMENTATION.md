@@ -291,7 +291,6 @@ method: `GET`
 
 -----
 ### Video
-
 <a name="videos/show_basic" />
 ##### videos/show_basic
 method: `GET`
@@ -302,7 +301,7 @@ method: `GET`
 | video_id | string | false |   |
 | video_url | string | false |   |
 
-
+-
 <a name="videos/show_basic_batch" />
 ##### videos/show_basic_batch
 method: `GET`
@@ -314,6 +313,7 @@ method: `GET`
 
 Note: `video_ids` is a comma separated list of values.
 
+-
 <a name="videos/show" />
 ##### videos/show
 method: `GET`
@@ -326,6 +326,7 @@ method: `GET`
 
 Note: `ext` is a comma separated list of values. Each value represents extended information that can be returned. The list can be found [here](http://open.youku.com/docs?id=46).
 
+-
 <a name="videos/show_batch" />
 ##### videos/show_batch
 method: `GET`
@@ -338,6 +339,7 @@ method: `GET`
 
 Note: `video_ids` and `ext` are a comma separated list of values. Each value in `ext` represents extended information that can be returned. The list can be found [here](http://open.youku.com/docs?id=47).
 
+-
 <a name="videos/by_me" />
 ##### videos/by_me
 method: `GET`
@@ -355,6 +357,7 @@ method: `GET`
 
 Note: not too sure what `last_item` does.
 
+-
 <a name="videos/by_user" />
 ##### videos/by_user
 method: `GET`
@@ -373,6 +376,7 @@ method: `GET`
 
 Note: not too sure what `last_item` does.
 
+-
 <a name="videos/update" />
 ##### videos/update
 method: `POST`
@@ -398,7 +402,7 @@ method: `POST`
 `public_type`: all (everyone can see), friend (friends only), password (password protected)  
 `watch_password`: no idea
 
-
+-
 <a name="videos/destroy" />
 ##### videos/destroy
 method: `POST`
@@ -409,6 +413,7 @@ method: `POST`
 | access_token | string | true |   |
 | video_id | string | true |   |
 
+-
 <a name="videos/by_related" />
 ##### videos/by_related
 method: `GET`
@@ -419,6 +424,7 @@ method: `GET`
 | video_id | string | true |   |
 | count | integer | false | 20 |
 
+-
 <a name="videos/favorite/by_me" />
 ##### videos/favorite/by_me
 method: `GET`
@@ -433,6 +439,7 @@ method: `GET`
 
 `orderby`: doesn't seem like theres another option other than favorite-time
 
+-
 <a name="videos/favorite/by_user" />
 ##### videos/favorite/by_user
 method: `GET`
@@ -448,6 +455,7 @@ method: `GET`
 
 `orderby`: doesn't seem like theres another option other than favorite-time
 
+-
 <a name="videos/favorite/create" />
 ##### videos/favorite/create
 method: `POST`
@@ -458,6 +466,7 @@ method: `POST`
 | access_token | string | true |   |
 | video_id | string | true |   |
 
+-
 <a name="videos/favorite/destroy" />
 ##### videos/favorite/destroy
 method: `POST`
@@ -468,6 +477,7 @@ method: `POST`
 | access_token | string | true |   |
 | video_id | string | true |   |
 
+-
 <a name="videos/by_category" />
 ##### videos/by_category
 method: `GET`
