@@ -1,0 +1,27 @@
+{
+  "contributors": [
+    {
+      "name": "Steven Anderson",
+      "email": "steve@maestro.io"
+    }
+  ],
+  "dependencies": {
+    "deep-extend": "0.4.0",
+    "request": "2.39.x"
+  },
+  "description": "Youku API client library for node.js",
+  "devDependencies": {
+    "coffee-script": "1.7.x",
+    "mocha": "2.1.0",
+    "nock": "2.15.0"
+  },
+  "keywords": ["youku", "api", "client"],
+  "license": "MIT",
+  "main": "lib/youku.coffee",
+  "name": "youku-client",
+  "scripts": {
+    "prepublish": "cake build",
+    "test": "mocha test/test.js"
+  },
+  "version": "0.0.1"
+}
