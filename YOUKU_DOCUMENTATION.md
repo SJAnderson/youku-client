@@ -392,11 +392,11 @@ method: `POST`
 | description | string | false |   |
 | thumbnail_seq | integer | false |   |
 
-`title`: limited to 2-50 single-byte characters, can't all be numbers
-`tags`: each tag is 2-6 characters or 2-12 letters, no more than 10 tags (my translation on this one was a bit rough)
-`category`: ex. the film
-`copyright_type`: values are original/reproduced
-`public_type`: all (everyone can see), friend (friends only), password (password protected)
+`title`: limited to 2-50 single-byte characters, can't all be numbers  
+`tags`: each tag is 2-6 characters or 2-12 letters, no more than 10 tags (my translation on this one was a bit rough)  
+`category`: ex. the film  
+`copyright_type`: values are original/reproduced  
+`public_type`: all (everyone can see), friend (friends only), password (password protected)  
 `watch_password`: no idea
 
 
