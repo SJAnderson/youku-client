@@ -483,7 +483,7 @@ method: `GET`
 | page | integer | false | 1 |
 | count | integer | false | 20 |
 
-`period`: today/week/month/history (i believe history is all time)
+`period`: today/week/month/history (i believe history is all time)  
 `orderby`: published/view-count/comment-count/favorite-count
 
 -----
