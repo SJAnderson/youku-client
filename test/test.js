@@ -16,6 +16,7 @@
         defaults = {};
         before(function() {
           return defaults = {
+            access_token: null,
             client_id: null,
             rest_base: 'https://openapi.youku.com/v2',
             request_options: {
