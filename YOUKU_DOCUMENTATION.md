@@ -1,9 +1,7 @@
 # Youku OpenAPI - English Documentation
 
-Source: http://open.youku.com/docs
+Source: http://open.youku.com/docs  
 Disclaimer: I used google translate to create this and I haven't tested all these endpoints. I make no guarantees to the accuracy of this document.
-
-**Endpoints**
 
 #### Users
   - [`users/myinfo`](#users/myinfo)
@@ -44,7 +42,14 @@ Disclaimer: I used google translate to create this and I haven't tested all thes
   - [`videos/favorite/destroy`](#videos/favorite/destroy)
   - [`videos/by_category`](#videos/by_category)
 
-#### Programs
+#### Shows
+  - [`shows/show`](#shows/show)
+  - [`shows/show_batch`](#shows/show_batch)
+  - [`shows/show_premium`](#shows/show_premium)
+  - [`shows/by_category`](#shows/by_category)
+  - [`shows/by_related`](#shows/by_related)
+  - [`shows/videos`](#shows/videos)
+
 #### Playlists/Albums
 #### Search
 #### People
@@ -97,7 +102,8 @@ method: `GET`
 | user_ids | string | false |   |
 | user_names | string | false |   |
 
-Note: `user_ids` and `user_names` are a comma separated list of values.
+`user_ids`: comma-separated list of values  
+`user_names`: comma-separated list of values  
 
 -
 <a name="users/friendship/followings" />
@@ -189,7 +195,7 @@ method: `GET`
 | client_id | string | true |   |
 | comment_ids | string | true |   |
 
-Note: `comment_ids` is a comma separated string of values.
+`comment_ids`: comma-separated list of values
 
 -
 <a name="comments/by_video" />
@@ -311,7 +317,7 @@ method: `GET`
 | client_id | string | true |   |
 | video_ids | string | true |   |
 
-Note: `video_ids` is a comma separated list of values.
+`video_ids`: comma-separated list of values
 
 -
 <a name="videos/show" />
@@ -324,7 +330,7 @@ method: `GET`
 | video_id | string | true |   |
 | ext | string | false |   |
 
-Note: `ext` is a comma separated list of values. Each value represents extended information that can be returned. The list can be found [here](http://open.youku.com/docs?id=46).
+`ext`: comma-separated list of values. Each value represents extended information that can be returned. The list can be found [here](http://open.youku.com/docs?id=46).
 
 -
 <a name="videos/show_batch" />
@@ -337,7 +343,8 @@ method: `GET`
 | video_ids | string | true |   |
 | ext | string | false |   |
 
-Note: `video_ids` and `ext` are a comma separated list of values. Each value in `ext` represents extended information that can be returned. The list can be found [here](http://open.youku.com/docs?id=47).
+`ext`: comma-separated list of values. Each value represents extended information that can be returned. The list can be found [here](http://open.youku.com/docs?id=46).  
+`video_ids`: comma-separated list of values
 
 -
 <a name="videos/by_me" />
@@ -496,7 +503,81 @@ method: `GET`
 `orderby`: published/view-count/comment-count/favorite-count
 
 -----
-### Programs
+### Shows
+<a name="shows/show" />
+##### shows/show
+method: `GET`
+
+| parameter | type | required | default |
+| ------- | ------- | ------- | ------- |
+| client_id | string | true |   |
+| show_id | string | true |    |
+
+-
+<a name="shows/show_batch" />
+##### shows/show_batch
+method: `GET`
+
+| parameter | type | required | default |
+| ------- | ------- | ------- | ------- |
+| client_id | string | true |   |
+| show_ids | string | true |    |
+
+`show_ids`: comma-separated list of values
+
+-
+<a name="shows/show_premium" />
+##### shows/show_premium
+method: `GET`
+
+| parameter | type | required | default |
+| ------- | ------- | ------- | ------- |
+| client_id | string | true |   |
+| show_ids | string | true |    |
+| page | integer | false | 1 |
+| count | integer | false | 20 |
+
+`show_ids`: comma-separated list of values
+
+-
+<a name="shows/by_category" />
+##### shows/by_category
+method: `GET`
+
+| parameter | type | required | default |
+| ------- | ------- | ------- | ------- |
+| client_id | string | true |   |
+| category | string | false |    |
+| genre | string | false |    |
+| area | string | false |    |
+| release_year | integer | false |    |
+| paid | string | false |  today  |
+| orderby | string | false |  published  |
+| streamtypes | string | false |    |
+| person | string | false |    |
+| page | integer | false | 1 |
+| count | integer | false | 20 |
+
+`paid`: `0` for free, `1` for pay  
+`orderby`: view-count/comment-count/reference-count/favorite-count/view-today-count/view-week-count/release-date/score/updated  
+`streamtypes`: flvhd/flv/3gphd/3gp/hd/hd2  
+`person`: character name or ID
+
+-
+<a name="shows/by_related" />
+##### shows/by_related
+method: `GET`
+
+| parameter | type | required | default |
+| ------- | ------- | ------- | ------- |
+| client_id | string | true |   |
+| show_id | string | true |    |
+| count | integer | false | 20 |
+
+-
+<a name="shows/videos" />
+##### shows/videos
+method: `GET`
 
 -----
 ### Playlists/Albums
