@@ -17,7 +17,7 @@
   },
   "keywords": ["youku", "api", "client"],
   "license": "MIT",
-  "main": "lib/youku.coffee",
+  "main": "lib/youku.js",
   "name": "youku-client",
   "repository": {
     "type": "git",
@@ -27,5 +27,5 @@
     "prepublish": "cake build",
     "test": "mocha test/test.js"
   },
-  "version": "0.0.4"
+  "version": "0.0.5"
 }
