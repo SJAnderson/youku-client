@@ -71,6 +71,10 @@ client.get('users/show', {
 });
 ```
 
+### Documentation
+
+I've included Youku API documentation in english [here](https://github.com/SJAnderson/youku-client/blob/master/YOUKU_DOCUMENTATION.md) for your convenience. Youku provides english documentation on their site, but it's incomplete.
+
 ### Examples
 
 Examples will go here.
