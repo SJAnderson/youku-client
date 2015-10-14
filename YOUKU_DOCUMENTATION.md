@@ -7,7 +7,6 @@ Disclaimer: I used google translate to create this and I haven't tested all thes
 
 #### Users
   - [`users/myinfo`](#users/myinfo)
-  - [`users/myinfo`](#users/myinfo)
   - [`users/show`](#users/show)
   - [`users/show_batch`](#users/show_batch)
   - [`users/friendship/followings`](#users/friendship/followings)
