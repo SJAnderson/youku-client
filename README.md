@@ -25,7 +25,7 @@ client.get('videos/by_user', {
 
 ### Quick Start
 
-You will need a developer client id from Youku, which can be obtained [here](http://open.youku.com/). If using chrome and you don't speak chinese, right-click anywhere on the page and select "Translate to <language>".
+You will need a developer client id from Youku, which can be obtained [here](http://open.youku.com/). If using chrome and you don't speak chinese, right-click anywhere on the page and select "Translate to (your language)".
 
 I highly recommend placing your credentials somewhere private and safe.
 
@@ -70,3 +70,35 @@ client.get('users/show', {
   return console.log(resp);
 });
 ```
+
+### Examples
+
+Examples will go here.
+
+### Contributors
+
+Authored and maintained by [@sjanderson](http://www.github.com/sjanderson).
+
+### License
+
+The MIT License (MIT)
+
+youku-client: Copyright (c) 2015 Steve Anderson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
