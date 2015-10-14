@@ -579,6 +579,20 @@ method: `GET`
 ##### shows/videos
 method: `GET`
 
+| parameter | type | required | default |
+| ------- | ------- | ------- | ------- |
+| client_id | string | true |   |
+| show_id | string | true |    |
+| show_videotype | string | true |    |
+| show_videostage | string | true |    |
+| orderby | string | false |  published  |
+| page | integer | false | 1 |
+| count | integer | false | 20 |
+
+`show_videotype`: not sure  
+`show_videostage`: not sure  
+`orderby`: videoseq-asc/videoseq-desc
+
 -----
 ### Playlists/Albums
 
