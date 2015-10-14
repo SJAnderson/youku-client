@@ -11,6 +11,7 @@ class Youku
 
     # merge default options with client submitted options
     @options = extend {
+      access_token: null
       client_id: null
       rest_base: 'https://openapi.youku.com/v2'
       request_options:
@@ -21,10 +22,7 @@ class Youku
     }, options
 
     # create request and pass client submitted request options
-    params = extend @options.request_options, {
-      client_id: @options.client_id
-    }
-    @request = request.defaults params
+    @request = request.defaults @options.request_options
 
   endpointBuilder: (path) ->
     base = @options.rest_base
@@ -56,9 +54,9 @@ class Youku
     }
 
     if method is 'post'
-      options.form = params
+      options.form = extend params, {client_id: @options.client_id}
     else if method is 'get'
-      options.qs = params
+      options.qs = extend params, {client_id: @options.client_id}
 
     @request options, (err, resp, data) ->
       return callback err, data, resp if err
