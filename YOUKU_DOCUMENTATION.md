@@ -337,7 +337,6 @@ method: `GET`
 | video_ids | string | true |   |
 | ext | string | false |   |
 
-
 Note: `video_ids` and `ext` are a comma separated list of values. Each value in `ext` represents extended information that can be returned. The list can be found [here](http://open.youku.com/docs?id=47).
 
 <a name="videos/by_me" />
@@ -394,15 +393,10 @@ method: `POST`
 | thumbnail_seq | integer | false |   |
 
 `title`: limited to 2-50 single-byte characters, can't all be numbers
-
 `tags`: each tag is 2-6 characters or 2-12 letters, no more than 10 tags (my translation on this one was a bit rough)
-
 `category`: ex. the film
-
 `copyright_type`: values are original/reproduced
-
 `public_type`: all (everyone can see), friend (friends only), password (password protected)
-
 `watch_password`: no idea
 
 
@@ -490,7 +484,6 @@ method: `GET`
 | count | integer | false | 20 |
 
 `period`: today/week/month/history (i believe history is all time)
-
 `orderby`: published/view-count/comment-count/favorite-count
 
 -----
