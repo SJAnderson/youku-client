@@ -18,7 +18,7 @@
   }
 
   describe('Youku', function() {
-    this.timeout(10000);
+    this.timeout(30000);
     describe('Constructor', function() {
       return describe('new Youku()', function() {
         var defaults;
@@ -42,7 +42,6 @@
         it('creates new instance', function() {
           var client;
           client = new Youku();
-          console.log(this.timeout());
           return assert(client instanceof Youku);
         });
         it('has default options', function() {

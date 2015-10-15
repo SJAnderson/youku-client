@@ -137,8 +137,6 @@ describe 'Youku', ->
           client_secret: CLIENT_SECRET
         }
 
-      this.timeout 3000
-
       it 'method exists', ->
         assert.equal typeof(client.get), 'function'
 
