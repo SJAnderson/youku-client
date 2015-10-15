@@ -113,6 +113,10 @@ class Youku
       try
         data = JSON.parse data
       catch parse_err
+        err = {
+          code: resp.statusCode
+          message: resp.statusMessage
+        }
         return callback err, data, resp
 
       if typeof data.error isnt 'undefined'
