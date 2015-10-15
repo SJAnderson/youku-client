@@ -34,8 +34,11 @@ You will need a developer `client_id` from Youku, which can be obtained [here](h
 I highly recommend placing your credentials somewhere private and safe.
 
 ```js
-var CLIENT_ID = require('/keys/youku.json').client_id;
-var client = new Youku({client_id: CLIENT_ID});
+var config = require('/keys/youku.json');
+var client = new Youku({
+  client_id: config.client_id,
+  client_secret: config.client_secret
+});
 ```
 
 To make GET and POST requests:
@@ -131,6 +134,16 @@ I've included Youku API documentation in english [here](https://github.com/SJAnd
 ### Examples
 
 Examples will go here.
+
+### Testing
+
+Add `YOUKU_CLIENT_ID` and `YOUKU_CLIENT_SECRET` as environment variables.
+
+to test if developing in the CoffeeScript source file:
+`cake build; mocha test/test.js`
+
+to test if developing in compiled JavaScript:
+`mocha test/test.js`
 
 ### Contributors
 
