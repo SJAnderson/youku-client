@@ -140,6 +140,9 @@ method: `POST`
 | parameter | type | required | default |
 | ------- | ------- | ------- | ------- |
 | client_id | string | true |   |
+| access_token | string | true |   |
+| user_id | integer | true |   |
+| user_name | string | true |   |
 
 -
 <a name="users/subscribe/create" />

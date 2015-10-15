@@ -101,12 +101,11 @@ class Youku
         access_token: @options.access_token
         client_id: @options.client_id
       }, params
-
     else if method is 'get'
-    options.qs = extend {
-      access_token: @options.access_token
-      client_id: @options.client_id
-    }, params
+      options.qs = extend {
+        access_token: @options.access_token
+        client_id: @options.client_id
+      }, params
 
     @request options, (err, resp, data) ->
       return callback err, data, resp if err
