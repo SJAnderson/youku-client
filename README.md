@@ -7,7 +7,11 @@ An asyncronous client library for the Youku REST api.
 ```js
 var Youku = require('youku');
  
-var client = new Youku({client_id: ''});
+var client = new Youku({
+  client_id: ''
+  client_secret: ''
+  redirect_uri: ''
+});
  
 client.get('videos/by_user', {
   user_id: 77296796
@@ -25,7 +29,7 @@ client.get('videos/by_user', {
 
 ### Quick Start
 
-You will need a developer client id from Youku, which can be obtained [here](http://open.youku.com/). If using chrome and you don't speak chinese, right-click anywhere on the page and select "Translate to (your language)".
+You will need a developer `client_id` from Youku, which can be obtained [here](http://open.youku.com/). If using chrome and you don't speak chinese, right-click anywhere on the page and select "Translate to (your language)".
 
 I highly recommend placing your credentials somewhere private and safe.
 
@@ -58,9 +62,9 @@ client.get('videos/show', {
 });
 ```
 
-Get user details:
+Follow user:
 ```js
-client.get('users/show', {
+client.post('users/show', {
   user_name: "Ｈ＆Ｍ"
 }, function(err, user, resp) {
   if (err) {
@@ -68,6 +72,55 @@ client.get('users/show', {
   }
   console.log(user);
   return console.log(resp);
+});
+```
+
+### OAuth2 Authorization
+
+- In order for you to make requests on a user's behalf, you'll need to ubtain an `access_token` through Youku's oauth authentication flow. 
+
+`getAuthorizationUrl`: use this to build a URL that will redirect your user to the youku login screen. It takes an optional argument, the `redirect_uri`. If a `redirect_uri` is not passed in, it'll use the `redirect_uri` that was provided when the Youku instance was created
+
+`authorizeUrl`: when Youku redirects back to your `redirect_uri`, they will send `code` as a GET parameter. Pass `code` into `authorizeUrl` and a callback takes two parameters, `err` and `result` in that order. If the call is successful, `result` will be populated with authorization data.
+
+`refreshUrl`: Takes `refresh_token` and a callback. When you receive an authorization object from Youku, you receive a `refresh_token`. Pass this into `refreshUrl` to receive a fresh token.
+
+Below is an example of how one might authenticate a user within an ExpressJS app.
+
+```js
+var http = require('http');
+var express = require('express');
+var Youku = require('youku-client');
+var app = express();
+
+var client = new Youku({
+  client_id: "YOUR_CLIENT_ID",
+  client_secret: "YOUR_CLIENT_SECRET",
+  redirect_uri: 'http://www.example.com/handleauth'
+});
+
+// Send your users here first to authorize
+app.get('/authorize_user', function (res) {
+  var youku_login_url = client.getAuthorizationUrl();
+  res.redirect(youku_login_url);
+});
+
+// This is your redirect URI
+app.get('/handleauth', function (req, res) {
+  client.authorizeUser(req.query.code, function (err, result) {
+    if (err) {
+      console.log("Auth Failed");
+      res.send(err);
+    } else {
+      console.log("Auth Successful");
+      console.log("Access Token: " + result.access_token);
+      res.send(result);
+    }
+  });
+});
+
+http.createServer(app).listen(app.get('port'), function () {
+  console.log("Express server listening on port " + app.get('port'));
 });
 ```
 

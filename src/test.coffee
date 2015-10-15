@@ -11,6 +11,8 @@ describe 'Youku', ->
         defaults = {
           access_token: null
           client_id: null
+          client_secret: null
+          redirect_uri: null
           rest_base: 'https://openapi.youku.com/v2'
           request_options:
             headers:

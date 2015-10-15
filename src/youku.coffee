@@ -13,6 +13,8 @@ class Youku
     @options = extend {
       access_token: null
       client_id: null
+      client_secret: null
+      redirect_uri: null
       rest_base: 'https://openapi.youku.com/v2'
       request_options:
         headers:
@@ -23,6 +25,19 @@ class Youku
 
     # create request and pass client submitted request options
     @request = request.defaults @options.request_options
+
+  authorizeUser: (code, callback) ->
+    base = @endpointBuilder '/oauth2/token'
+
+    params = {
+      client_id: @options.client_id
+      client_secret: @options.client_secret
+      code: code
+      grant_type: 'authorization_code'
+      redirect_uri: @options.redirect_uri
+    }
+
+    @post base, params, callback
 
   endpointBuilder: (path) ->
     base = @options.rest_base
@@ -42,6 +57,34 @@ class Youku
 
     return endpoint
 
+  getAuthorizationUrl: (redirect_uri) ->
+    base = "#{@options.rest_base}/oauth2/authorize"
+
+    redirect_uri = redirect_uri or @options.redirect_uri
+
+    params = {
+      client_id: @options.client_id
+      redirect_uri: @options.redirect_uri
+      response_type: 'code'
+    }
+
+    url_obj = url.parse base
+    url_obj.query = params
+
+    return url.format url_obj
+
+  refreshToken: (refresh_token, callback) ->
+    base = @endpointBuilder '/oauth2/token'
+
+    params = {
+      client_id: @options.client_id
+      client_secret: @options.client_secret
+      grant_type: 'refresh_token'
+      refresh_token: refresh_token
+    }
+
+    @post base, params, callback
+
   requestBuilder: (method, path, params, callback) ->
 
     # set the callback if no params are present
@@ -54,9 +97,16 @@ class Youku
     }
 
     if method is 'post'
-      options.form = extend params, {client_id: @options.client_id}
+      options.form = extend {
+        access_token: @options.access_token
+        client_id: @options.client_id
+      }, params
+
     else if method is 'get'
-      options.qs = extend params, {client_id: @options.client_id}
+    options.qs = extend {
+      access_token: @options.access_token
+      client_id: @options.client_id
+    }, params
 
     @request options, (err, resp, data) ->
       return callback err, data, resp if err
@@ -64,13 +114,11 @@ class Youku
       try
         data = JSON.parse data
       catch parse_err
-        err = new Error "Status Code: #{resp.statusCode}"
         return callback err, data, resp
 
-      if typeof data.errors isnt 'undefined'
-        callback data.errors, data, resp
+      if typeof data.error isnt 'undefined'
+        callback data.error, data, resp
       else if resp.statusCode isnt 200
-        err = new Error "Status Code: #{resp.statusCode}"
         callback err, data, resp
       else
         callback null, data, resp
