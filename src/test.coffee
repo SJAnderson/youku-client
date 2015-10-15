@@ -10,7 +10,7 @@ if not CLIENT_SECRET and not CLIENT_ID
   throw new Error("Missing CLIENT_ID and/or CLIENT_SECRET")
 
 describe 'Youku', ->
-  this.timeout 10000
+  this.timeout 30000
   describe 'Constructor', ->
     describe 'new Youku()', ->
       defaults = {}
